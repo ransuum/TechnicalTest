@@ -22,13 +22,13 @@ public class Menu {
         int ans = scanner.nextInt();
         switch (ans){
             case 1:
-
                 System.out.println("Examples: 2*x+5=17, -1.3*5/x=1.2, 2*x*x=10, 2*(x+5+х)+5=10, 17=2*x+5");
                 String s = scanner.next();
                 Examples examples = new Examples();
                 examples.setExample(s);
                 examples.setEqual(process.procces(s));
-                System.out.println(exampleService.save(examples));
+                exampleService.save(examples);
+                System.out.println(examples);
                 break;
             case 2:
                 System.out.print("equals: ");
@@ -45,6 +45,23 @@ public class Menu {
                 examples1.setEqual(eq);
                 examples1.setExample(s1);
                 exampleService.delete(examples1);
+                break;
+            case 5:
+                System.out.println("Examples: 2*x+5=17, -1.3*5/x=1.2, 2*x*x=10, 2*(x+5+х)+5=10, 17=2*x+5");
+                String s2 = scanner.next();
+                System.out.print("Input ur solution: ");
+                double correctAnswer = process.procces(s2);
+                double answer1 = scanner.nextDouble();
+                if (answer1 == correctAnswer){
+                    System.out.println("Correct!");
+                    Examples ex = new Examples();
+                    ex.setExample(s2);
+                    ex.setEqual(correctAnswer);
+                    exampleService.save(ex);
+                    System.out.println(ex);
+                } else {
+                    System.err.println("Not correct");
+                }
                 break;
             default:
                 System.out.println("Not supported");

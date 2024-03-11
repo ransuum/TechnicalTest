@@ -13,7 +13,6 @@ public class Process {
     public Double procces(String a) {
         List<String> stringList = List.of(a.split(""));
         List<String> e = new ArrayList<>();
-        System.out.println(checkForFormat(stringList));
         double d = Double.parseDouble(findAfterOrBeforeEquals(stringList).toString());
         List<String> hashMapForNumbDivisionMulti = new ArrayList<>();
         for (int i = 0; i < withoutEqual.size(); i++) {
@@ -76,9 +75,6 @@ public class Process {
             }
         }
         findAllX(e);
-        System.out.println(hashMapForNumbPlusMinus);
-        System.out.println(withoutEqual);
-        System.out.println(hashMapForNumbDivisionMulti);
         int countX = (int) withoutEqual.stream().filter(s1 -> s1.equals("x")).count();
         if (firstNumbsBeforeBracket.isEmpty()) {
             for (int i = 0; i < hashMapForNumbPlusMinus.size(); i++) {
@@ -90,7 +86,6 @@ public class Process {
             }
         }
         findAllX(withoutEqual);
-        System.out.println(integers);
         for (String s1 : hashMapForNumbDivisionMulti) {
             if (s1.matches("(.*)/(.*)")) {
                 String[] array = s1.split("/");
@@ -125,7 +120,6 @@ public class Process {
                 xSum = xSum + Double.parseDouble(s);
             }
         }
-        System.out.println(xSum);
         if (xSum > 0 || xSum < 0) {
             d = d / xSum;
         } else {
@@ -190,19 +184,6 @@ public class Process {
         }
         return ok;
 
-    }
-
-    public String checkForFormat(List<String> stringList) {
-        String mess = "";
-        for (String s : stringList) {
-            if (s.equals("x")) {
-                mess = "It's okay";
-            }
-            if (s.equals("=")) {
-                mess = "It's okay";
-            }
-        }
-        return mess;
     }
 
     public StringBuilder findAfterOrBeforeEquals(List<String> stringList) {
